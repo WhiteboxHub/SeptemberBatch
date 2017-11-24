@@ -1,0 +1,168 @@
+Selenium
+
+
+
+
+
+Automation: Testing the given application (web or mobile) using the external tools or the automation framework code.
+
+Selenium is used to automate the web application.
+
+Advantages of Automation:
+
+Repeatability of the tests using tools or codes rather than manual testing leads to increase the speed of execution of test cases.
+
+Sprint1 -100TC
+
+Sprint 2-100TC+100TC
+
+for cross browser testing, compatibility, parallel testing, different platforms
+
+We can vary the tests for different user easily by implementing data driven testing.
+
+Login scenario - 20 sets (positive. negative)—different different i/p
+
+It easily supports frequent regression testing do be done in minimal time and generates good test reports to analyze.
+
+It also helps to find the defects which may miss while doing manual testing.
+
+- Advantages of automation
+
+Human tendency to miss something—automation
+
+Test coverage is good
+
+Fast
+
+Regression testing
+
+Data driven testing.
+
+- Limitations of automation testing.
+
+Shorter time limits—
+
+Looks and feel—UI Testing—video and audio quality-
+
+Captcha images,opt generations
+
+Dev-
+
+In the test environment we can make it constant
+
+Call to captcha service
+
+Java code
+
+Web/browser application.
+
+UI of the page is frequently change
+
+Login page:--
+
+
+Manually –Open, enter un, pwd, click ok.
+
+
+Automation-opens the browser, find the textbox  to enter un, pwd, button, asserting for next step.
+
+
+When to automate and when to not automate ?
+
+Automation depends on timebrame available, if we have very tight dead line then we cannot go for automation.
+
+Automation should be avoided if there is any UI change expected in near future as we need to rewrite the automations script again.
+
+Also application scenario wise-pages which need manual interaction cannot be automated like
+
+- If there is some captcha code being generated instantly and you need to enter that code or payment page whether OTP is being sent to mobile.
+- Image/video Previews- Between transitioning between thumbnail and playback of video I have observed not well automated.
+- Barcode Reader cannot be automated.
+
+- Few look and feel related test cases need manual testing
+
+Different Automation tools & frameworks: Selenium. QTP-vbscript, SilkTest etc.
+Selenium is set of different tools support different test approaches..
+
+In 2004- Jason Huggins started Selenium at Thoughtworks.
+Initially he developed a javascript library
+
+What is selenium—
+Selenium webdriver(API) is a tool used to automate web application
+Webdriver-it is an interface from selenium webdriver api,
+Which is used to automate web applications.
+Web Elements –
+Components:
+IDE, RC, Grid, web driver
+IDE- plugin for firefox, record and playback tool, assert statements.
+
+Selenium IDE- is a tool which generates automation scripts. It’s plugin/add only in Mozilla browser.
+Create automation scripts quickly, to learn automation scripts with the help of a tool aided mechanism.
+Also as a beginner who move from manual testing to automation- he can have a glance of automation scripts using the selenium IDE.
+
+He can also get an idea about locators.
+Selenium 1- programmatic way of automation which had been now developed as webdriver.
+
+Selenium RC- Selenium Remote Control- Client server Architecture.
+Its currently deprecated.
+
+Testcase:
+Testcase
+Execute it – result
+Assert(actual,expected)-
+Actual-result
+Expected –specification doc.
+
+Assert/ verify:-
+Assert(act,exp)- True- passed –it continues with the execution
+False- failed- it comes out of the method, it is not going to continue with the rest of the steps.
+
+
+Verify(act,exp)- true – passed – it continues with the execution
+False- logs the error and continues the next steps in the same method.
+
+
+Limitation of IDE:-
+Record Options – limited options, cannot enchance the code according to the requirement only works for firefox
+We cannot integrate with other tools
+
+Selenium WebDriver : it is an API written to automate scripts.
+There is an interface named WebDriver which enables us to interact with the browser. Every browser have their own Driver class implemented.
+
+http://seleniumhq.github.io/selenium/docs/api/java/index.html
+
+How to create automation test script :
+
+- Create WebDriver Object we need to first load the browser.
+- to load the browser set the property and path of the browser executable.
+- Load the given URL in the browser
+- Find the webelement required for action
+-  Perform the action
+- get actual result from the action
+- get expected result BRD/SRS in agile defined in user story
+- compare the actual and expected
+- report test case pass or fail.
+
+EXAMPLE:-
+public class Firstexample{
+
+public static void main(String arg[]){
+
+System.setProperty("webdriver.chrome.driver","C:\\Users\\WBL\\MedhaWorkspace\\Web\\resources\\drivers\\chromedriver.exe");
+driver =new ChromeDriver();
+driver.get(https://www.walmart.com/);
+System.out.println(“Title:” +driver.getTitle());
+}}
+
+@Test()
+public void loginTest() {
+
+
+System.setProperty("webdriver.chrome.driver","C:\\Users\\WBL\\MedhaWorkspace\\Web\\resources\\drivers\\chromedriver.exe");
+driver =new ChromeDriver();
+driver.get(https://www.walmart.com/);
+
+}
+
+
+
