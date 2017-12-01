@@ -1,0 +1,105 @@
+Mouse Hover actions
+Actions
+moveToElement
+perform
+build
+contextClick
+
+Wait
+
+ImplicitWait - check if element present in 0 sec and in the nth sec specific in parameter
+ExplicitWait  - check if element present in 0 sec and also in every 500ms until the nth sec specified in the parameter
+    FluentWait- is also explicit wait where the developer can mention the polling time
+
+Pagination / infinite Scrolling
+
+use JavaScriptExecutor
+
+Cookies
+
+As Http is stateless, browsers use cookie to store info on the session.
+Cookie is basically info stored as key value pair
+some of info it store session id, client info, path, expiry
+
+In automation, ecommerce sites, you might have to use cookie to maintain session to complete the testscript.
+
+Tables
+
+iFrames
+
+<frame >
+   <  >.html
+
+</frame>
+
+Excel - read and write  basically Data Driven Testing
+
+Apache poi - API
+XSSFWorkbook
+
+in framework ----  Utils with all methods needed for data driven testing.
+
+Multi select
+ in a drop down, in some web application you can select 2 or more values.
+Select class with isMultiple method
+returns true if the <select multiple>  has multiple as option
+
+Headless browser
+-HtmlUnitDriver
+-PhantomJS - Ghost Driver
+http://phantomjs.org/download.html
+
+headless browsers are faster as the ui is not required
+All the functionalities of the WebDriver are available.
+Large number of TC can be executed using headless browsers
+
+FileUpload
+For Windows based apps selenium cannot handle it
+Robot Class
+in java.awt   it is similar to Actions
+only difference Action Keyevent are only for the modifier key shift, alt ...
+
+- once we click on the upload button, we copy the full path into the clipboard programmatically
+- paste and enter in the fileupload window using keyevents
+
+AutoIt
+
+it is an external tool which helps to work on windows based app.
+https://www.autoitscript.com/site/autoit/downloads/
+
+1.using autoit identify the element class and instance  --- control id
+2.write script for accessing the window popup
+2.1  Enable and set focus to the open window and get the windowhandle
+    $windowHandle = WinGetHandle("Open")
+    WinActivate($windowHandle)
+
+2.2   set text to the textbox in the open window
+2.3    click on the open button of the open window
+
+DesiredCapabilities
+
+Every browser has its own capabilities
+for example Chrome  capability to view page in mobile setting
+
+it will load vanilla chrome driver without extension, capability, cookie,....
+
+github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities
+sites.google.com/a/chromium.org/chromedriver/capabilities
+eg. www.myntra.com      www.jabong.com  ---Browser Notification
+
+how to handle the browser notification
+for that
+DesiredCababilities dc = new DesiredCapabilities();
+dc.setCapability("javascriptEnabled", false);
+System.out.println (dc.getCapability("javascriptEnabled"));
+ChomeOptions chromeOptions = new ChromeOptions();
+chromOptions.addArguments("--disable-notifications");
+driver = new ChromeDriver(chromeOptions);
+
+Assignment
+
+- In page object model add a page for add to cart
+- Test for the expiry of the cookie
+- Print all the links in a web page
+- Data driven add to values and write in the sum column
+- In walmart page click a webelement in the bottom of the page
