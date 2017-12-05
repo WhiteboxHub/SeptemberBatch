@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="example suite 1" verbose="1">
+    
+    <test name="Regression1">
+    
+  <classes>
+       
+       <class name="com.walmart.HomePage"/>
+      
+       
+       
+   </classes>
+   
+    
+    
+    
+     <!-- <classes>
+       
+       <class name="com.testsuite1.*"/>
+      
+       
+       
+   </classes> -->
+   
+    
+   <!--  <packages>
+        <package name="com.testsuite1"/>
+        <package name="com.testsuite2">
+         </package>
+        
+    </packages>
+    
+    --> 
+    
+   <!--  <packages>
+       
+        <package name=".*"/>
+        
+         
+        
+    </packages> -->
+    
+    
+    
+    
+    </test>
+    
+</suite>
