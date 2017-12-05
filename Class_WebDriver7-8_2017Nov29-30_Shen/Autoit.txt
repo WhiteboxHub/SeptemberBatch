@@ -1,0 +1,29 @@
+download autoit tool
+www.autoitscript.com/site/autoit/downloads
+talk about editor and autoit identifier
+//www.autoitscript.com/autoit3/docs/tutorial/notepad/notepad.htm
+https://www.autoitscript.com/autoit3/docs/functions/ControlSetText.htm
+https://www.autoitscript.com/autoit3/docs/functions/ControlClick.htm
+
+ControlSetText ( "title", "text", controlID, "new text" [, flag = 0] )
+ControlClick ( "title", "text", controlID [, button = "left" [, clicks = 1 [, x [, y]]]] )
+
+Title:Open   Class:Edit   Instance:1
+Title:Open   Class:Button   Instance:1
+....
+in scite file
+
+$windowHandle = WinGetHandle("Open")
+WinActivate($windowHandle)
+ControlSetText("Open" , "" , "[Class:Edit;Instance:1]" , "D:\Test.txt")
+sleep(2000)
+ControlClick("Open", "", "[Class:Button;Instance:1]")
+
+$windowHandle = WinGetHandle("Open")
+WinActivate($windowHandle)
+ControlSetText("Open" , "" , "[Class:Edit;Instance:1]" , "C:\Shen\Ganesha\vinay-laku-saras.jpg")
+sleep(2000)
+ControlClick("Open", "", "[Class:Button;Instance:1]")
+
+
+   SAVE & COMPILE
