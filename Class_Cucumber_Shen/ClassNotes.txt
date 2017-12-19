@@ -1,0 +1,146 @@
+Cucumber
+
+BDD
+Behavior driven development
+
+Web based development
+every page had a class and test class
+
+Based on the behavior of the user story
+the development is taken care
+
+in BRD
+User should be able to locate store nearby // find the nearest store
+
+Test Driven Development
+BDD is built upon TDD
+
+the user story  as a feature
+for one feature different scenarios are written
+
+In BDD, you can directly involve the client and non-technical people
+in the team to understand the flow of requirement.
+
+Cucumber has 3 main components
+
+1.Feature file  with extension .feature  (Gherkin language)
+  Feature: User should find the nearest location
+  
+  Scenario: User enters zipcode and press enter
+  Given: User access homepage walmart.components
+  When: User enters zipcode
+  then: User visits location page
+  
+  Scenario: User enters cityname and press enter
+  Given: User access homepage walmart.components
+  When: User enters city
+  And:
+  then:
+  then: User visits location page
+  
+  Cucumber recommends one scenario to be within 5 to 6 steps
+  if it is more than 5 then subdivide it into multiple scenario
+  break the scenario into sub scenarios
+  
+  
+  
+  it is in plain English----Gherkin where it follows certain keywords
+  run as cucumber feature to get the skeleton
+ 
+2. StepDefinition Class
+
+   the class written for the feature file
+   the scenarios are described as methods
+    given  --->  homepage
+	when --> condition executed
+	then ---> assertions will be done here.
+
+
+3.  Runner Class
+
+   Will actually map the feature file with the stepdefinition file.
+   
+   Cucumber defined annotations
+   @RunWith
+   @CucumberOption(features ={path of the feature file},
+                   glue ={path of stepdefinition file},
+					dryRun
+					strict)
+
+					
+What is the advantage of cucumber
+plain text, client can also be involved
+maps require to automation in a easy way
+
+What are the files needed for cucumber
+
+What is the language used in feature file
+
+What are the types of tests you can run with
+  Selenium cucumber
+  
+  Web based
+  API
+
+  
+  Install cucumber into Eclipse
+  using https://cucumber.io/cucumber-eclipse/
+  
+  https://cucumber.io/cucumber-eclipse/update-site
+  in Help install new software
+  
+  
+  Add the maven project
+  
+  dependencies needed for cucumber
+  Cucumber-java
+  Cucumber-junit
+  Cucumber-picocontainer
+  
+  
+  For one scenario send multiple data
+  DataTable
+  get Table using the featurefile
+  
+  
+  
+  
+  
+  Same Scenario but different conditions
+  Scenario Example
+  Scenario Outline:
+  
+  
+  
+  
+  Example:
+  
+  |   |   |
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
