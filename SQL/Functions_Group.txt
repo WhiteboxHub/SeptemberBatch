@@ -1,0 +1,306 @@
+https://www.w3resource.com/mysql/date-and-time-functions/mysql-convert_tz-function.php
+
+https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html
+The DROP command removes a table from the database. All the tables' rows, indexes and privileges will also be removed. DROP and TRUNCATE are DDL commands, whereas DELETE is a DML command. DELETE operations can be rolled back (undone), while DROP and TRUNCATE operations cannot be rolled back.
+
+Functions- single row & multi row functions
+Single row -  character functions, number functions, date & time functions
+Implicit and explicit conversions
+Conditional functions
+Group functions 
+
+
+Lets Recap
+Last two classes we had seen
+basic database commands like ddl, dml, dcl and select queries 
+
+Functions
+Functions are set of sql statements that accept input parameter, perform actions and return the result.  There are user defined functions, system functions / in-built functions
+
+Single row functions and multi row functions
+
+Single row functions are those which return a result for each row in the table Like if there are 5 rows in a table the command will return 5 rows as results.
+
+Mysql has some inbuilt functions
+for eg all string functions.
+
+Substr, length
+
+select * from employees;
+select first_name from employees where employee_id = 100;
+select first_name, substr(first_name, 1, 4)  from employees where employee_id = 100;
+ Substr (arg, starting index, number of characters required)
+length function - will return the number of characters in the string data type
+select first_name, length(first_name) from employees where employee_id = 100;
+
+There are other string in built functions in sql
+They are also called Character manipulation functions
+instr, lpad, rpad, trim, replace
+
+Case manipulation - lower, upper, initcap
+
+
+examples of case manipulation
+select * from employees where upper(email)='SKING' ;
+select * from employees where email=upper('sking'); 
+
+Both will return same output. 
+
+select upper('john');   --use for learning the function
+                    in oracle you need to use dual
+select upper('john') from dual;
+
+select upper('john'), lower('john'), init
+
+nested function select length(concat('john', 'candy'))
+
+;
+
+select instr('sql', 'q')   java a  it returns index of first occurance
+lpad allow to pad the length of space
+
+select lpad('java', 10, ' ');
+same for rpad('java', 10, '*');
+
+select trim ('       java              '); 
+select length ('       java              '), length( trim ('       java              ');
+select trim('H' from 'HelloworldH');
+
+select replace('jack and jue', 'j','bl');
+select first_name, instr(first_name, 'a') from employee;
+
+Number Manipulation functions
+round(50.123456, 5)
+trunc(50.123456,5)
+mod
+
+All these functions are used after you fetch from database you can format or manipulate and use it in the application. 
+select round(50.123456, 5), round(50.123456, 2), round(50.123456, 0);
+select round(50. 698, 2), round(50.698, 0);
+round(44.567, -1) ---  -1 will work on tens place -2 hundred place
+If the number in tens place is half of ten round to nearest tens
+The decimal place argument is limit 0 to 1000
+In oracle is uses a table called dual for no table option
+Truncate - will not check for remaining digits it will not compare
+Select truncate(45.5567, 2), truncate(45.987,0); 
+Remainder --  Difference between quotient and modulus
+Select mod(50,2)
+
+Operations on Date columns
+Formatting date, date and time operation, +/- 7 business days
+
+-- yyyy-mm-dd people hired after the particular date
+select * from employees where hire_date > '1987-06-17';
+select sysdate();  date along with time it is an inbuilt function and it can be used in your queries
+-- to subtract one month from todays date,  you can also add date, can use one day / year
+As per business requirement you can display the warranty period 
+Select subdate(sysdate(), interval 1 month);
+Select adddate(sysdate(), interval 1 month);
+Select adddate(sysdate(), interval  100 day);
+Select subdate(‘2017-01-30’, interval 1 month);
+Select subdate(‘2017-01-30’, interval 7 day);
+--  difference between two dates
+Select datediff(‘2107-02-20’,’2017-01-30’)
+--
+Select extract(year from sysdate());
+-- find current year, month, day
+Select extract(year from sysdate()), extract(month from sysdate()), extract(day from sysdate());
+Select dayofmonth(sysdate()), dayofweek(‘2017-01-30’), dayofyear(sysdate();
+
+Select curdate();
+-- any difference between sysdate and curdate ---sysdate is with timestamp
+
+Select current_time();
+Select dayname(Sysdate()); -- gives alphabetical day
+-- versions keep updating the commands so please keep checking before implementing
+-- formatting is for displaying in ui
+Select date_format(curdate(),”%d/%m/%y”);
+Select date_format(sysdate(), “%h:%i,%s %p”);
+Select date_format(current_time(), “%r”); -- default time format as h m s am/pm its a short cut
+
+Select time_format(current_time(), “%r”);
+Select time_format(‘15:00’,”%r”);
+
+-- You can combine like last day of the month
+Select last_day(sysdate());
+
+Nested functions can be done like find first day of next month
+Select adddate(last_day(sysdate()), interval 1 day);
+
+One more we need to go through is the timestamp
+Let s go thro time stamp GMT is considered common time zone
+https://publib.boulder.ibm.com/tividd/td/TWS/SC32-1274-02/en_US/HTML/SRF_mst273.htm
+
+Based on the application we might have to convert the timezones
+Convert_tz convert from one tmezone to another
+-- SELECT CONVERT_TZ('2004-01-01 12:00:00','GMT','MET');
+SELECT TIMEDIFF('2000:01:01 00:00:00',   '2000:01:01 00:00:00.000001');
+
+Timestamp
+SELECT TIMESTAMP('2003-12-31');
+SELECT TIMESTAMP('2003-12-31 12:00:00','12:00:00');
+
+Presentation is based on oracle, we are executing in  my sql as it is mostly used and open source too.
+
+From pg 114 explain there will difference in the syntax
+
+You round and truncate on date too.
+
+
+----------------------
+Describe employee;
+Explain decimal and integer;
+
+Implicit Data type conversion
+Varchar /char ---- number / int 
+ Varchar /char ---- date
+number / int         ---- varchar
+Date                    ----- varchar
+
+Select * from employees where salary > 2400;
+Select * from employees where salary > '2400';
+Select * from employees where employee_id= '100';
+select * from employees where hire_date > '1987-06-17';
+-- for expression evaluation the data type conversion is implicit
+-- conversion occurs for comparison operators
+SELECT 1 > '6x';
+
+Explicit data type conversion
+-- in oracle To_number, to_char, to_date
+
+Number ---> char
+Date     ----> char
+Char     ----> number
+Char     -----> date
+
+To_char --- takes date and format
+In mysql it is date(), dateformat(), cast(), convert()
+SELECT 38.8, CAST(38.8 AS CHAR);
+SELECT CONVERT(_latin1'Müller' USING utf8);
+
+
+Null functions
+
+Select * from employees;
+-- Commission pct is null based on that we need to do some functions
+-- We need to calculate the increment
+Select salary, salary + (commission_pct*salary) incsalary from employees;
+
+--- The calculation goes null when operation is with null
+
+--- To avoid this we have some functions
+Select commission_pct, ifnull(commission_pct,0) from employees;
+
+Select salary, salary + (ifnull(commission_pct,0)*salary) incsalary from employees;
+-- simple if else
+Select last_name, if(commission_pct>0.3,'good','avg') rating from employees;
+
+-- nullif (p1,p2) 
+-- if both are equal --null otherwise p1 is returned
+Select  nullif('hi','hi');
+Select  nullif('hi','hello');
+Select first_name, length(first_name), last_name, length(last_name),
+ nullif(length(first_name),length(last_name)) result from employees;
+
+
+-coalease is similar to nullif- it takes the first not null value
+
+Select last_name, manager_id,commission_pct, coalesce(manager_id, commission_pct, -1) comm from employees order by commission_pct;
+
+Select coalesce('hi', null, 0);
+Select coalesce(null, null, 'p3', 'p4',0);
+---looks for the first not null value otherwise returns default value
+
+If- else statements
+Case column name  when ‘value1’ then execute1
+                                 When ‘value2’ then execute2
+			When ‘value3’ then execute3
+                           Else  execute  end 
+
+
+
+Select last_name, job_id, salary,
+case job_id  when 'IT_PROG' then 1.10*salary 
+		     When 'ST_CLERK' then 1.15*salary 
+			When 'SA_REP' then 1.20*salary 
+			Else  salary end  'REVISED_SALARY'
+from employees;
+
+
+--------
+That is all about single row functions now we will go through group functions
+
+Questions for interview
+Joins
+Group by, group functions
+Sub queries
+DDL, DCL, DML
+Primary key, foreign key
+Set operators - union, union all
+Drop, delete, truncate
+
+
+-------------
+Group functions and group by
+
+--  single row function we saw multiple rows input and output
+Select lower(first_name) from employees;
+
+---- average -  multiple rows input single output
+Select avg(salary) from employees;
+Select max(salary) from employees;
+Select min(salary) from employees;
+Select sum(salary) from employees;
+--
+Select count(*) from employees ;
+-- 
+Select count(*) from employees where salary > 10000;
+-- With group functions you should not add individual columns
+
+
+--------------------
+SELECT DISTINCT column, AGG_FUNC(column_or_expression), …
+FROM mytable
+    JOIN another_table
+      ON mytable.column = another_table.column
+    WHERE constraint_expression
+    GROUP BY column
+    HAVING constraint_expression
+    ORDER BY column ASC/DESC
+    LIMIT count OFFSET COUNT;
+Group by …..having
+When u want to group some data based on requirement and do some operations
+Useful when we have to execute group functions after we group data
+Like if i have to find the highest salary in each department
+Minimum salary in each department
+Employees whose salary is less than average in each department
+
+Amazon mobile products table -- 
+OS        company_name   model    cost
+Android    Samsung          galaxy      67
+Android    Google              nexus     67
+Android    Google            motorola     67
+Ios	      apple		6s        70
+Ios	      apple		7s       80
+
+Costliest mobile under apple
+Select max(cost) from products group by company_name having company_name=’apple’
+
+Cheapest mobile under samsung
+Select min(cost) from products group by company_name having company_name=’samsung’
+
+Subgroup
+Select max(cost) from products group by OS, company_name having company_name=’apple’
+-- find all job id in each department
+Select job_id, department from employees group by job_id;
+
+-- find max salary under each department
+Select max(salary), department_id from employees group by department_id;
+-- only for one dept filtering
+Select max(salary), department_id from employees group by department_id having department_id=40;
+-- sub group   
+-- find all department for each job
+Select  department_id,  job_id from employees group by job_id, department_id;
+Select max(salary), department_id,  job_id from employees group by department_id, job_id;
+
+-- non grouped column name cannot be used with the query

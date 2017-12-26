@@ -1,0 +1,102 @@
+SQL 3 - 12/6/2017  - Shen
+
+SQL Functions
+subquery
+joins
+procedure
+
+training@whitebox-learning.com
+
+Assignment 
+what is the difference between drop, delete and truncate?
+
+SQL Functions
+
+Single rows - one input and gives one output
+multi row / aggregate function - multi row input and gives one output
+
+Single row function
+
+1. character
+2. Number function
+3. Date functions
+
+Character function
+upper
+lower
+concat - concatenates the parameters passed
+length
+initcap - in oracle, mysql does not support this function
+lpad - pad the character passed  lpad('string',10,'character to be padded')
+rpad 
+trim - removes all leading and trailing space
+'    firstname   '
+when you mention the character to remove trim('W' from 'WWelcome to JavaWW')
+
+replace(string, string to be replaced, string to replace)
+
+instr - to find the first occurance of the character in the string
+
+Number function
+
+Round (will round off the nearest place value mentioned)
+-(number, placevalue)
+100.789, 1  ---  100.8
+100.789, 2  ---- 100.79
+100.798, 2 ----  100.80
+
+-1 will be rounding off for tens place, -2 hundreds
+
+
+truncate - will remove the place mentioned
+
+Conversions in sql
+
+implicit conversion - while using different data types in 
+ sql statement the data type are converted automatically
+ 
+ varchar/char --> number /int
+ varchar / char ---> date
+ number /int --> varchar
+ Date ----> varchar
+ 
+ Explicit conversion
+ number --> char
+ char --> number
+ in mysql date(), dateformat(), cast(), convert()
+ 
+ examples
+ 
+ null function
+ if else conditional
+ 
+ groupby 
+ joins
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
