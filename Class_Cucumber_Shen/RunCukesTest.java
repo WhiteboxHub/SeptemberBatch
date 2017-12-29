@@ -8,8 +8,13 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features={"src/main/feature"},
                  glue={"com.wbl.stepdefinition"},
-                 dryRun=true
-                 )
+                 dryRun=false,
+                 tags={"@NavigateLinks"})
+//tags={"@NavigateLinks,@SearchItems"}  -- both scenarios will be executed OR
+//tags={"@NavigateLinks","@SearchItems"}
+   //-- scenario with both tags will only be executed  AND
+//tags={"@NavigateLinks,@SearchItems, ~@FindStore"} --  ~ ignore the scenario
+
 public class RunCukesTest {
 
 }
